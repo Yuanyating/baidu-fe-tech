@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <style>
+        .container {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .container>div {
+            display: inline-block;
+            border: 1px solid #ccc;
+            background: rgb(235, 227, 227);
+            width: 50px;
+            height: 50px;
+            margin: 0 20px;
+        }
+        .container > .box1 {
+            transform: skewX(30deg)
+        }
+
+        .container > .box2 {
+            transform: scaleX(0.5)
+        }
+
+        .container > .box3 {
+            transform: rotate(45deg)
+        }
+
+        .container > .box4 {
+            transform: translate(10px,20px)
+        }
+
+        .container > .box5 {
+            transform: rotate(45deg) translate(10px,20px) scaleX(0.5) skewX(30deg);   
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>box0</div>
+        <div class="box1">box1</div>
+        <div class="box2">box2</div>
+        <div class="box3">box3</div>
+        <div class="box4">box4</div>
+        <div class="box5">box5</div>
+    </div>
+    
+</body>
+</html>
