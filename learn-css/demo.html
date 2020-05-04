@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <style>
+        .container {
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        button {
+            width: 100px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        /* 节省空标签 */
+        h2::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            margin: 10px auto;
+            background: blue;
+            transition: width .5s ease ;   
+        }
+
+        .lineactive::after {
+            width: 120px;
+        }
+        
+        .box {
+            transition: color .5s ease;
+        }
+
+        .boxactive {
+            color: blue;
+        }
+
+
+    </style>
+    <script> 
+        var flag = true; 
+        function toggleClass(){ 
+            var h2 = document.getElementsByTagName('h2')[0]
+            var box = document.getElementsByClassName('box')[0]
+            if(flag){
+                box.setAttribute('class','box boxactive')
+                h2.setAttribute('class','lineactive')
+                flag = false;
+            }else {
+                box.setAttribute('class','box')
+                h2.removeAttribute('class')
+                flag = true
+            }
+        }
+    </script>
+</head>
+<body> 
+    <div class="container">
+        <div class="box">
+            <h2 class="title">前端学院</h2>
+        </div>
+        <button onclick="toggleClass()">切换样式</button>
+    </div>
+    
+</body>
+</html>
