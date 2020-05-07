@@ -1,0 +1,293 @@
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+p, h1, h2{
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+.container {
+    width: 1600px;
+    height: 6274px;
+}
+.first-page-bg {
+    width: 1600px;
+    height: 990px;
+    background: url('./bg1.png') no-repeat;
+}
+.first-page {
+    background-color: rgba(20, 20, 20, 0.651);
+    position: absolute;
+    left: 0px;
+    width: 1600px;
+    height: 990px;
+    z-index: 1; 
+    color: #fff;   
+}
+.hello {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 206px;
+    font-size: 62px;
+    
+}
+.china {
+    position: absolute;
+    width: 753px;
+    height: 85px;
+    top: 340px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+}
+.placeholder {
+    position: absolute;
+    width: 970px;
+    height: 250px;
+    top: 538px;
+    left: 335px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+.createaccount {
+    position: absolute;
+    font-size: 16px;
+    line-height: 28px;
+    width: 205px;
+    height: 12px;
+    left: 366px;
+    top: 52px;
+    z-index: 2;
+    
+}
+.free {
+    position: absolute;
+    width: 170px;
+    height: 10px;
+    font-size: 12px;
+    line-height: auto;
+    opacity: 0.3;
+    left: 388px;
+    top: 84px;
+    z-index: 2;
+}
+.website {
+    position: absolute;
+    background: transparent;
+    width: 292px;
+    height: 50px;
+    left: 61px;
+    top: 140px;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.password {
+    position: absolute;
+    background: transparent;
+    width: 292px;
+    height: 50px;
+    top: 140px;
+    left: 402px;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+.signup {
+    position: absolute;
+    background: #fff;
+    width: 125px;
+    height: 50px;
+    top: 140px;
+    left: 732px;
+    font-size: 12px;
+    line-height: 22px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* second-page */
+.second-page {
+    position: relative;
+    width: 1600px;
+    height: 710px;
+    background-color: #fff;
+    color: #000;
+}
+.boatloads {
+    position: absolute;
+    width: 223px;
+    height: 11px;
+    font-size: 14px;
+    line-height: 28px;
+    left: 689px;
+    top: 89px;
+}
+.ready-made {
+    position: absolute;
+    width: 657px;
+    height: 93px;
+    font-size: 42px;
+    line-height: 52px;
+    left: 473px;
+    top: 140px;
+    text-align: center;
+}
+.feature1,.feature2,.feature3,.feature4 {
+    position: absolute;
+    width: 415px;
+    height: 83px;
+    cursor: pointer;
+}
+.feature1:hover,.feature2:hover,.feature3:hover,.feature4:hover {
+    transform: translate(-4px,-4px);
+    box-shadow: 2px 2px 4px #000;
+}
+.feature1 { top: 316px; left: 291px; }
+.feature2 { top: 316px; left: 887px; }
+.feature3 { top: 483px; left: 291px; }
+.feature4 { top: 483px; left: 887px; }
+
+.feature1>p, .feature2>p, .feature3>p, .feature4>p {
+    position: absolute;
+    left: 62px;
+}
+.feature1 .title, .feature2 .title,
+.feature3 .title, .feature4 .title {
+    top: 0;
+    height: 16px;
+    font-size: 20px;
+}
+.feature1 .description, .feature2 .description,
+.feature3 .description, .feature4 .description {
+    top: 44px;
+    width: 335px;
+    height: 42px;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+/* third-page */
+.third-page-bg {
+    width: 1600px;
+    height: 800px;
+    background: url('./bg2.png') no-repeat;
+}
+.third-page {
+    position: relative;
+    width: 1600px;
+    height: 800px;
+    background-color: rgba(20, 20, 20, 0.651);
+    color: #fff;
+    overflow: hidden;
+}
+.left {
+    position: absolute;
+    top: 181px;
+    left: 80px;
+    width: 505px;
+    height: 433px;
+}
+.left .title {
+    position: absolute;
+    font-size: 42px;
+    width: 370px;
+}
+.left .description {
+    position: absolute;
+    width: 370px;
+    top: 186px;
+    font-size: 18px;
+    opacity: 0.7;
+}
+.left button {
+    position: absolute;
+    top: 372px;
+    width: 240px;
+    height: 60px;
+    font-size: 18px;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+.left button:last-child {
+    left: 270px;
+    background: transparent;
+    color: #fff;
+}
+.iPad {
+    position: absolute;
+    top: 103px;
+    left: 956px;
+    width: 645px;
+    height: 600px;
+    background: url('./icon/IPad.png') no-repeat;
+}
+.screen {
+    position: absolute;
+    top: 30px;
+    left: 59px;
+    width: 582px;
+    height: 542px;
+    background: url('./Screen.png') no-repeat;
+    color: #000;
+}
+
+/* forth-page */
+.forth-page {
+    position: relative;
+    width: 1600px;
+    height: 580px;
+    background-color: #fff;
+}
+.forth-page h1 {
+    position: relative;
+    top: 99px;
+    margin: 0 auto;
+    width: 545px;
+    height: 41px;
+    font-size: 42px;
+    line-height: 52px;
+    white-space: nowrap;
+}
+.forth-page article {
+    position: relative;
+    display: flex;
+    width: 1041px;
+    height: 283px;
+    margin: 0 auto;
+    top: 220px;
+}
+.forth-page article section {
+    position: relative;
+    flex: 1;
+    margin: 0 40px;
+}
+.forth-page img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.forth-page p {
+    position: absolute;
+    top: 80px;
+    width: 261px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 26px;
+    color:rgba(0,0,0,0.7);
+}
+
