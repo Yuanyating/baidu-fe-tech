@@ -1,0 +1,26 @@
+html, body, p, h1 {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    position: relative;
+}
+h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    color: #fff;
+    background: rgb(71, 126, 228);
+    text-align: center;
+    padding: 50px 10px;
+    box-sizing: border-box;
+}
+span {
+    padding-right: 10px;
+}
+.main {
+    margin-left: 200px;
+    padding: 10px;
+}
