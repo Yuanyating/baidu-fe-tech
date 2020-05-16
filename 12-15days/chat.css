@@ -1,0 +1,507 @@
+html,body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+ul, li, p, h1, div {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+li {
+    list-style: none;
+}
+.container {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.slider {
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 第一栏 */
+.left-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    background-color: rgb(29,37,49);
+}
+.left-wrap .buttons {
+    position: fixed;
+}
+.left-wrap .buttons li {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 20px;
+    list-style: none;
+    cursor: pointer;
+}
+.left-wrap .plane {
+    background: rgb(39,157,244) url('./icon/Item\ 1.png') center center no-repeat;
+}
+.left-wrap .socket {
+    background: rgb(143,119,228) url('./icon/Item\ 2.png') center center no-repeat;
+}
+.left-wrap .game {
+    background: rgb(240,79,52) url('./icon/Item\ 3.png') center center no-repeat;
+}
+.left-wrap .add {
+    background: transparent url('./icon/Add\ App.png') center center no-repeat;
+}
+.left-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100px;
+    height: 34px;
+}
+.left-bottom ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+.left-bottom li {
+    display: inline-block;
+    list-style: none;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.left-bottom li:first-child {
+    background: url("./icon/Grid.png") center center no-repeat;  
+}
+.left-bottom li:last-child {
+    background: url("./icon/Settings.png") center center no-repeat;
+}
+
+/* 第二栏 */
+.menu-list {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(34,44,60);
+}
+.menu-list .title {
+    margin: 0 29px;
+    border-top: 1px solid rgb(91,103,121);
+}
+.menu-list span {
+    width: 100%;
+    height: 71px; 
+    font-size: 12px;
+    line-height: 71px;
+    color: rgb(91,103,121);
+    cursor: pointer;
+}
+.menu-list img {
+    padding: 29px 0;
+    float: right;
+}
+.menu-list li{
+    position: relative;
+    color: rgb(183,192,205);
+    font-size: 14px;
+    line-height: 36px;
+    list-style: none;
+    margin: 0 29px;
+    cursor: pointer;
+}
+.menu-list li:last-child {
+    padding-bottom: 15px;
+}
+.menu-list li .blue-badge {
+    position: absolute;
+    right: 0;
+    width: 38px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    background: url('./icon/Base.png') center center no-repeat;
+    font-size: 14px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.menu-list li .red-badge {
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: url('./icon/BaseRed.png') center center no-repeat;
+    color: #fff;
+    font-size: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.products ul li img {
+    float: none;
+    padding: 0;
+    margin-right: 14px;
+    line-height: 34px;
+}
+.menu-list .goals {
+    position: fixed;
+    bottom: 0;
+    margin: 0 29px 20px 29px;
+    color: #fff;
+    font-size: 14px;
+}
+.menu-list .goals progress {
+    width: 190px;
+    height: 4px;
+}
+
+/* Main */
+main {
+    margin-left: 350px;
+}
+/* Main Header */
+main header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 500;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    font-size: 24px;
+    border-bottom: 1px solid rgb(230,233,236);  
+}
+header h1 {
+    margin-left: 30px;
+    line-height: 80px;
+    font-size: 24px;
+}
+header .profile {
+    display: flex;
+    line-height: 80px;
+    padding: 15px 85px;
+}
+.avatar {
+    position: relative;
+    margin-right: 17px;
+}
+.online {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: 30px;
+    background: url('./icon/Status.png') center center no-repeat;
+}
+.user-info {
+    margin-right: 8px;
+}
+.user-info span {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+}
+.user-info .username {
+    color: rgb(35,153,241)
+}
+.user-info .identity {
+    color: #b5b5b5;
+}
+.profile button {
+    position: absolute;
+    right: 30px;
+    top: 28px;
+    background: transparent;
+    border: none;
+}
+/* Main chat message */
+.chat {
+    position: relative;
+    width: 100%;
+}
+.message {
+    display: inline-block;
+    width: 400px;
+}
+.search {
+    padding: 17px 32px;
+    border-bottom: 1px solid rgb(230,233,236);
+    border-right: 1px solid rgb(230,233,236);
+}
+.search input {
+    display: block;
+    box-sizing: border-box;
+    width: 340px;
+    height: 36px;
+    border: 1px solid rgb(230,233,236); ;
+    border-radius: 5px;
+    padding: 12px;
+    background: url('icon/Search\ icon.png') 310px center no-repeat;
+}
+.search input::placeholder {
+    font-size: 14px;
+    color: #9fa9ba;
+}
+
+.message ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 130px;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgb(230,233,236);
+    border-right: 1px solid rgb(230,233,236);
+}
+.message .firstline {
+    position: relative;
+}
+.message .information {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    font-size: 16px;
+}
+.message .information span {
+    display: block;
+}
+.message .information span:first-child {
+    color: #585d68;
+}
+.message .information span:last-child {
+    color: #b5b5b5;
+}
+.message .time {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    color: #585d68;
+    font-size: 14px;
+    line-height: 46px;
+}
+.message .mContent {
+    font-size: 14px;
+    line-height: 19px;
+    color: #585d68;
+}
+
+.message ul .active {
+    border-left: 3px solid #2399f1;
+}
+.message ul .active .information span:first-child {
+    padding-left: 17px;
+    background: url('icon/dot.png') 0 center no-repeat;
+    color: #2399f1;
+}
+.message ul .active .mContent {
+    position: relative;
+    padding-right: 24px;
+}
+.message ul .active .num {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    background: url('icon/BaseBlueCircle.png') center center no-repeat;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+}
+
+/* Main news */
+.news {
+    position: absolute;
+    left: 401px;
+    width: calc(100% - 401px);
+    top:0;
+    bottom: 0;
+}
+.news .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    height: 71px;
+    padding: 17px 21px 22px 28px;
+    border-bottom: 1px solid rgb(230,233,236);
+}
+.news .header .user {
+    font-size: 0;
+    line-height: 32px;
+}
+.news .header .name {
+    font-size: 18px;
+    color: #585d68;
+    margin-right: 10px;
+}
+.news .header .operation {
+    display: flex;
+    justify-content: space-between;
+    width: 284px;
+}
+.news .header .buttons {
+    display: inline-block;
+    height: 32px;
+    border: 1px solid #585d68;
+    border-radius: 5px;
+    font-size: 0;
+}
+.news .buttons li {
+    display: inline-block;
+    width: 36px;
+    height: 100%;
+    list-style: none;
+    text-align: center;
+    line-height: 46px;
+    background: rgb(251,252,253);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.news .buttons .line {
+    border-radius: 0;
+    border-left: 1px solid #585d68;
+    border-right: 1px solid #585d68;
+}
+.news .header .numbers {
+    font-size: 14px;
+    line-height: 32px;
+}
+.news .header .direction {
+    height: 32px;
+    border: 1px solid #585d68;
+    border-radius: 5px;
+    font-size: 0;
+}
+.news .header .direction li{
+    display: inline-block;
+    width: 36px;
+    height: 100%;
+    list-style: none;
+    text-align: center;
+    line-height: 46px;
+    background: rgb(251,252,253);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.news .header .direction li:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid #585d68;;
+}
+
+.body {
+    width: 100%;
+}
+.body .date {
+    position: relative;
+    border-bottom: 1px solid rgb(230,233,236);
+}
+.body .date .date-show {
+    position: absolute;
+    color: #7f8fa4;
+    font-size: 14px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
+    background: #fff;
+}
+.body .date .hide {
+    display: none;
+}
+.body .beforenew{
+    border-bottom: 1px solid #2399f1;
+}
+.body .new .date-show {
+    color: #2399f1;
+}
+.body .date ul {
+    padding: 26px 47px 6px 29px;
+}
+.body .date ul li {
+    display: flex;
+    align-items: flex-start;
+    list-style: none;
+    margin-bottom: 20px;
+}
+.body .date .content {
+    margin-left: 24px;
+}
+.body .date .content .name {
+    color: #585d68;
+    font-size: 16px;
+}
+.body .date .content .time {
+    color: #7f8fa4;
+    font-size: 14px;
+}
+.body .date .content p {
+    color: #585d68;
+    font-size: 14px;
+}
+.body .date .content .pictures {
+    display: flex;
+    padding: 0;
+    margin-top: 18px;
+    font-size: 0;
+}
+.date .content .pictures li {
+    position: relative;
+    margin-bottom: 0;
+    margin-right: 13px;
+    cursor: pointer;
+}
+.date .content .pictures .mask {
+    display: none;
+    position: absolute;
+    width: 156px;
+    height: 100px;
+    background: rgba(0,0,0,0.5) url('icon/Open\ icon.png') center center no-repeat;
+}
+.date .content .pictures .mask::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255,0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+.date .content .pictures li:hover .mask {
+    display: block;
+}
+.date .add {
+    display: flex;
+    margin: 0 auto 20px auto;
+    width: 620px;
+    height: 52px;
+    line-height: 52px;
+    border: 1px solid rgb(230,233,236);
+}
+.date .add .add-button {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgb(230,233,236);
+    background: rgb(245,246,249);
+    text-align: center;
+}
+.date .add .add-button span {
+    color: rgb(230,233,236);
+}
+.date .add .add-input {
+    padding-left: 20px;
+    color: #585d68;
+    font-size: 14px;
+}
