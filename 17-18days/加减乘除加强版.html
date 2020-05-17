@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        var resultNode = document.getElementById("result")
+        var oldText = resultNode.innerHTML;
+        document.getElementById("add-btn").onclick = function(){
+            var firNum = document.getElementById("first-number").value;
+            var secNum = document.getElementById("second-number").value;
+            var value = parseInt(firNum) + parseInt(secNum);
+            if(window.isNaN(value)){
+                alert("请输入数字！")
+            }else {
+                resultNode.innerHTML = oldText + value;
+            }
+            
+        }
+        document.getElementById("minus-btn").onclick = function(){
+            var firNum = document.getElementById("first-number").value;
+            var secNum = document.getElementById("second-number").value;
+            var value = parseInt(firNum) - parseInt(secNum);
+            if(window.isNaN(value)){
+                alert("请输入数字！")
+            }else {
+                resultNode.innerHTML = oldText + value;
+            }
+        }
+        document.getElementById("times-btn").onclick = function(){
+            var firNum = document.getElementById("first-number").value;
+            var secNum = document.getElementById("second-number").value;
+            var value = parseInt(firNum) * parseInt(secNum);
+            if(window.isNaN(value)){
+                alert("请输入数字！")
+            }else {
+                resultNode.innerHTML = oldText + value;
+            }
+        }
+        document.getElementById("divide-btn").onclick = function(){
+            var firNum = document.getElementById("first-number").value;
+            var secNum = document.getElementById("second-number").value;
+            var value = parseInt(firNum) / parseInt(secNum);
+            if(window.isNaN(value)){
+                alert("请输入数字！")
+            }else if(secNum == 0) {
+                alert("除数不可以为0哦")
+            }
+            else {
+                resultNode.innerHTML = oldText + value;
+            }
+        }
+    </script>
+</body>
+</html>

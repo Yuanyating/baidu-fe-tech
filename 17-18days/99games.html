@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <table>
+    </table>
+    
+</body>
+<script>
+    var table = document.querySelector("table");
+    for(var i=1; i<= 9; i++){
+        var newNode = document.createElement("tr")
+        for(var j=1; j<= 9&&j<=i; j++){
+            var tdNode = document.createElement("td");
+            var textNode = document.createTextNode(i+"*"+j+"= "+i*j);
+            tdNode.appendChild(textNode);
+            newNode.appendChild(tdNode)
+        }
+        table.appendChild(newNode)
+    }
+    
+</script>
+</html>

@@ -80,11 +80,16 @@
             padding: 0 20px;
             cursor: pointer;
         }
+        .greeting {
+           margin-top: 100px;
+           font-size: 20px;
+           color: pink;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>简历</h1>
+        <h1>简历<div id="greeting" class="greeting"></div></h1>
         <div class="main">
             <div>
                 <h2>基本信息</h2>
@@ -147,5 +152,20 @@
     document.getElementById("more").addEventListener('click',function(){
         alert("没有更多啦")
     })
+
+    
+    var date = new Date();
+    var time = date.getHours();
+    var greeting = document.getElementById("greeting");
+    if(time>6 && time<12){
+        greeting.innerHTML = "亲爱的 早上好哟"
+    }else if(time >= 12 && time <= 18){
+        greeting.innerHTML = "下午要努力工作呢:)"
+    }else if(time >18 && time< 24){
+        greeting.innerHTML = "你还在加班嘛 嘿嘿"
+    }else {
+        greeting.innerHTML = "夜深啦 快睡吧"
+    }
+    
 </script>
 </html>
