@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <style>
+        html, body, h1, h2 ,div, p {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .container {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 600px;
+            border: 1px solid rgb(88, 152, 224);
+        }
+        h1 {
+            position: absolute;
+            width: 140px;
+            top: 0;
+            bottom: 0;
+            background-color: rgb(88, 152, 224);
+            color: #fff;
+            font-size: 48px;
+            text-align: center;
+            padding: 100px 20px;
+            box-sizing: border-box;
+        }
+        .main {
+            margin-left: 140px;
+        }
+        h2 {
+            font-size: 18px;
+            background-color: rgb(88, 152, 224);
+            color: #fff;
+            padding: 5px;
+        }
+        .content {
+            font-size: 18px;
+            padding: 5px;
+        }
+        p {
+            padding: 10px 0;
+        }
+        .strange {
+            position: relative;
+        }
+        .strange h2 {
+            width: 200px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: all 2s ease;
+        }
+        .strange h2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 200px;
+            width: 0;
+            height: 0;
+            border: 17px solid transparent;
+            border-left: 17px solid rgb(88, 152, 224);
+        }
+        .strange .content {
+            display: none;
+            color: pink;
+            font-weight: bold;
+        }
+        button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>简历</h1>
+        <div class="main">
+            <div>
+                <h2>基本信息</h2>
+                <div class="content">
+                    <span><b>姓名</b> YYT</span>
+                    <span><b>性别</b> 女</span>
+                    <span><b>应聘职位</b> Web前端工程师</span>
+                </div>
+            </div>
+            <div>
+                <h2>联系方式</h2>
+                <div class="content">
+                    <span><b>手机</b> 12312341234</span>
+                    <span><b>Email</b> <a href="#">joinefe@baidu.com</a></span>
+                    <span><b>个人主页</b>  <a href="#">Github</a></span>
+                </div>
+            </div>
+            <div>
+                <h2>能力描述</h2>
+                <div class="content">
+                    <div>
+                        <b>技术能力</b>
+                        <p>熟练掌握HTML,CSS,JavaScript</p>
+                    </div>
+                    <div>
+                        <b>综合能力</b>
+                        <p>良好的沟通，主动积极，努力勤奋</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>项目经历<button id="more">了解更多</button></h2>
+                <div class="content">
+                    <div>
+                        <b>小度小度</b>
+                        <p>作为前端工程师角色参与了ABC组件的开发</p>
+                    </div>
+                    <div>
+                        <b>SAN Doc</b>
+                        <p>作为文档工程师参与了SAN Doc编写</p>
+                    </div>
+                </div>
+            </div>
+            <div class="strange">
+                <h2 onclick="show()">查看我的特殊爱好</h2>
+                <div class="content">
+                    <p>I Love Eeeeeeeeeeat:) 爱你哦(๑′ᴗ‵๑)Ｉ Lᵒᵛᵉᵧₒᵤ❤</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function show() {
+        var el = document.querySelector(".strange h2");
+        var content = document.querySelector(".strange .content")
+        el.style.width = '100%';
+        content.style.display = 'block';
+    }
+    document.getElementById("more").addEventListener('click',function(){
+        alert("没有更多啦")
+    })
+</script>
+</html>
