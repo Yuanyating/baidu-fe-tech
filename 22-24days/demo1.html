@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 1</title>
+</head>
+<body>
+    <div>
+        <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a" checked></label><input id="num-a" type="text">
+        <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+    </div>
+    <div id="btns">
+        <button id="btn1">判断当前选中的输入框输入内容是否为数字</button>
+        <button id="btn2">把 A 四舍五入为 B 个小数位数的数字</button>
+        <button id="btn3">当前选中数字的绝对值</button>
+        <button id="btn4">对当前选中的数字进行上舍入</button>
+        <button id="btn5">对当前选中的数字进行下舍入</button>
+        <button id="btn6">把当前选中的数字四舍五入为最接近的整数</button>
+        <button id="btn7">返回 A 和 B 中的最高值</button>
+        <button id="btn8">返回 A 和 B 中的最低值</button>        
+    </div>
+    <p id="result"></p>
+</body>
+<script>
+    var result = document.querySelector("#result");
+    var btns = document.querySelector("#btns")
+    var radioA = document.getElementById("radio-a")
+    var radioB = document.getElementById("radio-b")
+    var numA = document.getElementById("num-a")
+    var numB = document.getElementById("num-b")
+
+    btns.onclick = function(e) {
+        if(e.target.nodeName.toLocaleLowerCase() == "button"){
+            switch(e.target.id){
+                case 'btn1':
+                    oper1();
+                    break;
+                case 'btn2':
+                    oper2();
+                    break;
+                case 'btn3':
+                    oper3();
+                    break;
+                case 'btn4':
+                    oper4();
+                    break;
+                case 'btn5':
+                    oper5();
+                    break;
+                case 'btn6':
+                    oper6();
+                    break;
+                case 'btn7':
+                    oper7();
+                    break;
+                case 'btn8':
+                    oper8();
+                    break;
+            }
+        }
+    }
+    function isNumber(value) {         //验证是否为数字
+        if(isNaN(value)){
+            return false
+        }else {
+            return true
+        }
+    }
+
+    function oper1() {
+
+        if(radioA.checked){
+            if(isNumber(numA.value)){
+                result.innerHTML = "当前输入框输入是数字"
+            }else {
+                result.innerHTML = "当前输入框输入不是数字"
+            }
+        } else if(radioB.checked){
+            var num = numB.value
+            if(isNumber(num)){
+                result.innerHTML = "当前输入框输入是数字"
+            }else {
+                result.innerHTML = "当前输入框输入不是数字"
+            }
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    function oper2() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(isNumber(inputA) && isNumber(inputB)){
+            result.innerHTML = parseFloat(inputA).toFixed(inputB)
+        } else {
+            console.log("您输入的为非数字，请重新输入")
+        }
+    }
+    function oper3() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(radioA.checked){
+            if(isNumber(inputA)){
+                result.innerHTML = Math.abs(inputA)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else if (radioB.checked) {
+            if(isNumber(inputB)){
+                result.innerHTML = Math.abs(inputB)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    function oper4() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(radioA.checked){
+            if(isNumber(inputA)){
+                result.innerHTML = Math.floor(inputA)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else if (radioB.checked) {
+            if(isNumber(inputB)){
+                result.innerHTML = Math.floor(inputB)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    function oper5() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(radioA.checked){
+            if(isNumber(inputA)){
+                result.innerHTML = Math.ceil(inputA)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else if (radioB.checked) {
+            if(isNumber(inputB)){
+                result.innerHTML = Math.ceil(inputB)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    function oper6() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(radioA.checked){
+            if(isNumber(inputA)){
+                result.innerHTML = Math.round(inputA)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else if (radioB.checked) {
+            if(isNumber(inputB)){
+                result.innerHTML = Math.round(inputB)
+            } else {
+                console.log("您输入的为非数字，请重新输入")
+            }
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    function oper7() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(isNumber(inputA) && isNumber(inputB)){
+            result.innerHTML = Math.max(inputA, inputB)
+        } else {
+            console.log("您输入的为非数字，请重新输入")
+        }
+    }
+    function oper8() {
+        let inputA = numA.value
+        let inputB = numB.value
+        if(isNumber(inputA) && isNumber(inputB)){
+            result.innerHTML = Math.min(inputA, inputB)
+        } else {
+            console.log("您输入的为非数字，请重新输入")
+        }
+    }
+</script>
+</html>

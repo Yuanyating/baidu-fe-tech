@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 2</title>
+</head>
+<body>
+    <div>
+        <label>String A:
+            <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+        </label>
+        <textarea id="str-a"></textarea>
+        <label>String B:
+            <input id="radio-b" type="radio" name="str-obj" value="b">
+        </label>
+        <textarea id="str-b"></textarea>        
+        <label>Num A：<input id="num-a" type="number" value="0"></label>
+        <label>Num B：<input id="num-b" type="number" value="1"></label>
+    </div>
+    <div id="btns">
+        <button id="btn1">获取当前选中输入的内容长度</button>
+        <button id="btn2">当前选中输入中的第3个字符</button>
+        <button id="btn3">把两个输入框的文字连接在一起输出（concat）</button>
+        <button id="btn4">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+        <button id="btn5">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+        <button id="btn6">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+        <button id="btn7">当前选中输入框的行数</button>
+        <button id="btn8">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+        <button id="btn9">把所选输入框中的内容全部转为大写</button>
+        <button id="btn10">把所选输入框中的内容全部转为小写</button>
+        <button id="btn11">把所选输入框中内容的半角空格全部去除</button>
+        <button id="btn12">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+    </div>
+    <p id="result"></p>
+</body>
+<script>
+    var radioA = document.getElementById("radio-a")
+    var radioB = document.getElementById("radio-b")
+    var textA = document.getElementById("str-a")
+    var textB = document.getElementById("str-b")
+    var numA = document.getElementById("num-a")
+    var numB = document.getElementById("num-b")
+    var btns = document.getElementById("btns")
+    var result = document.getElementById("result")
+    var strA, strB, countA, countB;
+
+    btns.onclick = function(e) {
+        strA = textA.value
+        strB = textB.value
+        countA = numA.value
+        countB = numB.value
+        if(e.target.nodeName.toLocaleLowerCase() == 'button'){
+            switch(e.target.id){
+                case 'btn1':
+                    oper1();
+                    break;
+                case 'btn2':
+                    oper2();
+                    break;
+                case 'btn3':
+                    oper3();
+                    break;
+                case 'btn4':
+                    oper4();
+                    break;
+                case 'btn5':
+                    oper5();
+                    break;
+                case 'btn6':
+                    oper6();
+                    break;
+                case 'btn7':
+                    oper7();
+                    break;
+                case 'btn8':
+                    oper8();
+                    break;
+                case 'btn9':
+                    oper9();
+                    break;
+                case 'btn10':
+                    oper10();
+                    break;
+                case 'btn11':
+                    oper11();
+                    break;
+                case 'btn12':
+                    oper12();
+                    break;
+            }
+        }
+    }
+
+    function oper1() {
+        if(radioA.checked){
+            result.innerHTML = strA.length
+        } else if (radioB.checked){
+            result.innerHTML = strB.length
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper2() {
+        if(radioA.checked){
+            result.innerHTML = strA.charAt(2)
+        } else if (radioB.checked){
+            result.innerHTML = strB.charAt(2)
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper3() {
+        result.innerHTML = strA.concat(strB)
+    }
+
+    function oper4() {
+        result.innerHTML = strA.indexOf(strB)
+    }
+
+    function oper5() {
+        result.innerHTML = strB.lastIndexOf(strA)
+    }
+
+    function oper6() {
+        if(radioA.checked){
+            result.innerHTML = strA.slice(countA,countB) || strA.slice(countB,countA) 
+        } else if (radioB.checked){
+            result.innerHTML = strB.slice(countA,countB) || strB.slice(countB,countA)
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper7() {
+        if(radioA.checked){
+            result.innerHTML = strA.split(/\n/).length
+        } else if (radioB.checked){
+            result.innerHTML = strB.split(/\n/).length
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper8() {
+        if(radioA.checked){
+            result.innerHTML = strA.substr(countA,countB)
+        } else if (radioB.checked){
+            result.innerHTML = strB.substr(countA,countB)
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper9() {
+        if(radioA.checked){
+            result.innerHTML = strA.toLocaleUpperCase()
+        } else if (radioB.checked){
+            result.innerHTML = strB.toLocaleUpperCase()
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+    
+    function oper10() {
+        if(radioA.checked){
+            result.innerHTML = strA.toLocaleLowerCase()
+        } else if (radioB.checked){
+            result.innerHTML = strB.toLocaleLowerCase()
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper11() {
+        if(radioA.checked){
+            result.innerHTML = strA.replace(/ /g,"")
+        } else if (radioB.checked){
+            result.innerHTML = strB.replace(/ /g,"")
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+    function oper12() {
+        if(radioA.checked){
+            result.innerHTML = strA.replace(/a/g,strB)
+        } else if (radioB.checked){
+            result.innerHTML = strB.replace(/a/g,strA)
+        } else {
+            console.log("没有选中的文本框")
+        }
+    }
+
+</script>
+</html>
