@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 2</title>
+</head>
+<body>
+    <select id="year-select"></select>
+    
+    <select id="month-select"></select>
+    
+    <select id="day-select"></select>
+    
+    <select id="hour-select"></select>
+    
+    <select id="minite-select"></select>
+    
+    <select id="second-select"></select>
+    
+    <p id="result-wrapper"></p>
+</body>
+<script>
+    var year = document.getElementById("year-select")
+    var month = document.getElementById("month-select")
+    var day = document.getElementById("day-select")
+    var hour = document.getElementById("hour-select")
+    var minite = document.getElementById("minite-select")
+    var second = document.getElementById("second-select")
+
+    var result = document.getElementById("result-wrapper")
+
+    createNodes(2000,2032,year);
+    createNodes(1,12,month);
+    createNodes(1,31,day)
+    createNodes(0,23,hour)
+    createNodes(0,59,minite)
+    createNodes(0,59,second)
+    showResult()
+    //动态改变页面
+    document.querySelector("body").onchange = function(e) {
+        if(e.target.nodeName.toLocaleLowerCase() == "select"){
+            showResult();
+        }
+    }
+
+    //创建option
+    function createNodes(start, end, obj){
+        for(var i=start; i<=end; i++){
+            var newNode = document.createElement("option")
+            newNode.value = i
+            newNode.innerHTML = i
+            obj.appendChild(newNode)
+        }
+    }
+    //显示结果
+    function showResult() {
+        var showTime = {}
+        showTime.year = year[year.selectedIndex].value
+        showTime.month = month[month.selectedIndex].value
+        showTime.day = day[day.selectedIndex].value
+        showTime.hour = hour[hour.selectedIndex].value
+        showTime.minite = minite[minite.selectedIndex].value
+        showTime.second = second[second.selectedIndex].value
+        differentMonthsShow(showTime)
+        isLeapYear(showTime)
+        var showtheweek = showTheWeek(showTime)
+        var showtext = showText(showTime)
+
+        result.innerHTML = "现在距离"+showTime.year+"年"+showTime.month+"月"+showTime.day+"日星期"+showtheweek+
+            showTime.hour+":"+showTime.minite+":"+showTime.second + showtext;
+    }
+
+    
+    
+    //不同月份显示不同天数
+    function differentMonthsShow(currentTime) {
+        if(currentTime.month == 4 || currentTime.month == 6 || currentTime.month == 9 || currentTime.month == 11){
+            day.childNodes[30].style.display = "none"
+        } else if( currentTime.month == 2){
+            day.childNodes[30].style.display = "none"
+            day.childNodes[29].style.display = "none"
+            day.childNodes[28].style.display = "none"
+        }else {
+            day.childNodes[30].style.display = "block"
+            day.childNodes[29].style.display = "block"
+        }
+    }
+    //闰年
+    function isLeapYear(currentTime) {
+        if(month[month.selectedIndex].value == 2){
+            if( (currentTime.year % 4 == 0) && ((currentTime.year % 100)!=0) || ((currentTime.year % 400)==0)){        
+                day.childNodes[28].style.display = "block"
+            }else {
+                day.childNodes[28].style.display = "none"
+            }
+        }
+    }
+    //显示星期几
+    function showTheWeek(currentTime) {
+        var days = judgeDays(currentTime)
+        switch(days % 7){
+            case 0:
+                return "日"
+            case 1:
+                return "一";
+            case 2:
+                return "二";
+            case 3:
+                return "三";
+            case 4:
+                return "四";
+            case 5:
+                return "五";
+            case 6:
+                return "六";
+        }
+    }
+    //两个时间的秒数差
+    function secondsDifferences(currentTime) {
+        var date = new Date()
+        var realTime = {}
+        realTime.year = date.getFullYear()
+        realTime.month = date.getMonth() + 1
+        realTime.day = date.getDate()
+        realTime.hour = date.getHours()
+        realTime.minite = date.getMinutes()
+        realTime.second = date.getSeconds()
+        var secondsdifferences = judgeSeconds(realTime) - judgeSeconds(currentTime)
+        return secondsdifferences
+    }
+    //计算当前时间距离1900年1月1日的秒数
+    function judgeSeconds(currentTime){
+        var _seconds=0;
+        var _days = parseInt(judgeDays(currentTime))
+        _seconds += _days * 24 * 60 * 60
+        _seconds += parseInt(currentTime.hour) * 60 * 60
+        _seconds += parseInt(currentTime.minite) * 60
+        _seconds += parseInt(currentTime.second)
+        return _seconds
+    }
+    //计算当前时间距离1900年1月1日的天数
+    function judgeDays(currentTime) {
+        var totaldays = 0;
+        var isLeap = ((currentTime.year % 4 == 0) && ((currentTime.year % 100)!=0) || ((currentTime.year % 400)==0)) ? true:false
+        for(var i=1990; i<currentTime.year; i++ ){
+            if( (i % 4 == 0) && ((i % 100)!=0) || ((i % 400)==0)) {
+				totaldays += 366;
+			}else{
+				totaldays += 365;
+            }
+        }
+        for(var j=1; j<currentTime.month; j++){
+            if(j == 4 || j == 6 || j == 9 || j == 11){
+                totaldays += 30
+            } else if(j == 2){
+                isLeap ? (totaldays += 29) : (totaldays += 28)
+            } else{
+                totaldays += 31
+            }
+        }
+        totaldays += parseInt(currentTime.day)
+        return totaldays
+    }
+    //将秒数差转换为_天_小时_分_秒
+    function secondstransdayFunc(currentTime) {
+        var secondsdifferences = secondsDifferences(currentTime)
+        var diffTime = {}
+        diffTime.day = Math.floor(secondsdifferences/86400)
+        diffTime.hour = Math.floor((secondsdifferences%86400)/3600)
+        diffTime.minite = Math.floor(((secondsdifferences%86400)%3600)/60)
+        diffTime.second = Math.floor(((secondsdifferences%86400)%3600)%60)
+        return diffTime
+    }
+    //显示文本
+    function showText(currentTime) {
+        var secondsdifferences = secondsDifferences(currentTime)
+        var diffTime = secondstransdayFunc(currentTime)
+        var text = "";
+        var _day = parseInt(diffTime.day)
+        var _hour = parseInt(diffTime.hour)
+        var _minite = parseInt(diffTime.minite)
+        var _second = parseInt(diffTime.second)
+        text += secondsdifferences > 0 ? "已经过去":"还有"
+        text = text + Math.abs(_day)+"天"+ Math.abs(_hour)+"小时"+Math.abs(_minite)+"分"+Math.abs(_second)+"秒"
+        return text
+    }
+
+</script>
+</html>

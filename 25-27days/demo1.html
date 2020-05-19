@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clock {
+            text-align: center;
+            width: 500px;
+            height: 100px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock" class="clock"></div>
+    <div id="clock2" class="clock"></div>
+</body>
+<script>
+    var clock = document.getElementById("clock")
+    var clock2 = document.getElementById("clock2")
+    window.onload = function(){
+        setInterval(function(){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = addZero(date.getMonth() + 1);
+            var day = addZero(date.getDate());
+            var hour = addZero(date.getHours());
+            var minute = addZero(date.getMinutes())
+            var second = addZero(date.getSeconds())
+
+            var weekday = findWeek(date.getDay())
+            var weekday2 = findWeek2(date.getDay())
+            var timerange = timeRange(hour)
+            var hour2 = timerange == "PM" ? hour-12 : hour;
+
+            showTime(year,month,day,weekday,hour,minute,second);
+            showTime2(year,month,day,weekday2,hour2,minute,second,timerange)
+        },1000)
+    }
+    //星期函数
+    function findWeek(week) {
+        switch(week){
+                case 1:
+                    return "一";
+                case 2:
+                    return "二";
+                case 3:
+                    return "三";
+                case 4:
+                    return "四";
+                case 5:
+                    return "五";
+                case 6:
+                    return "六";
+                case 7:
+                    return "日";
+            }
+    }
+    function findWeek2(week) {
+        switch(week) {
+            case 1:
+                    return "Monday";
+            case 2:
+                    return "Tuesday";
+            case 3:
+                    return "Wensday";
+            case 4:
+                    return "Thursday";
+            case 5:
+                    return "Friday";
+            case 6:
+                    return "Saturday";
+            case 7:
+                    return "Sunday";
+        }
+    }
+    //补零函数
+    function addZero(time){
+        var relTime;
+        time < 10 ? relTime="0"+time : relTime=time;
+        return relTime
+    }
+    //判断上下午函数
+    function timeRange(hour) {
+        if(hour >= 12 && hour < 24){
+            return "PM"
+        }else {
+            return "AM"
+        }
+    }
+    //显示时间函数
+    function showTime(year,month,day,weekday,hour,minute,second) {
+        clock.innerHTML = year+"年"+month+"月"+day+"日 "+"星期"+weekday+" "+hour+":"+minute+":"+second
+    }
+    function showTime2(year,month,day,weekday,hour,minute,second,timerange) {
+        clock2.innerHTML = year+"-"+month+"-"+day+" "+weekday+" "+hour+":"+minute+":"+second+" "+timerange
+    }
+    
+</script>
+</html>
