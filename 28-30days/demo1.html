@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 1</title>
+    <style>
+        ul,li {
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        input {
+            padding: 5px 10px;
+        }
+        .email-sug {
+            position: absolute;
+            list-style: none;
+            width: 100%;
+        }
+        .email-sug li {
+            padding: 5px 10px;
+            border: 1px solid #000;
+            
+            font-size: 14px;
+        }
+        .email-sug .active {
+            background-color: green;
+        }
+        .email-sug li:hover {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" autofocus>
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+</body>
+<script>
+    // 邮箱后缀List参考
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    var input = document.getElementById("email-input")
+    var ul = document.getElementById("email-sug-wrapper")
+
+    input.addEventListener('input', inputChange)
+    ul.addEventListener("click", function(e) {
+        var e = e||window.event;
+        if(e.target.nodeName.toLocaleLowerCase() == "li"){
+            input.value = e.target.innerHTML
+            hide()
+        }
+        input.focus()
+    })
+    input.addEventListener('keyup', pressKey)
+    //按键功能
+    function pressKey(e) {
+        var e = e||window.event;
+        var liNodes = document.getElementsByTagName("li")
+        if(ul.style.display == "block"){
+            if(e.keyCode == "38"){
+                for(var i=0;i<liNodes.length;i++){
+                    if(liNodes[i].className=='active'){
+                        liNodes[i].removeAttribute('class','active');
+                        if(i==0){
+                            liNodes[liNodes.length-1].setAttribute('class','active');
+                            return;
+                        }else{
+                            liNodes[i-1].setAttribute('class','active');
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if(e.keyCode == "40"){
+                for(var i=0;i<liNodes.length;i++){
+                    if(liNodes[i].className=='active'){
+                        liNodes[i].removeAttribute('class','active');
+                        if(i==liNodes.length-1){
+                            liNodes[0].setAttribute('class','active');
+                            return;
+                        }else{
+                            liNodes[i+1].setAttribute('class','active');
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if(e.keyCode == "13") {
+                for(var i=0;i<liNodes.length;i++){
+                    if(liNodes[i].className=='active'){
+                        input.value = liNodes[i].innerHTML
+                        hide()
+                        return;
+                    }
+                }
+            }
+            if(e.keyCode == "27"){
+                input.select();
+            }
+
+        }
+    }
+    //输入改变函数
+    function inputChange() {
+        var inputValue = input.value.trim()
+        addObj(inputValue)
+        controller(inputValue)       
+    } 
+    //生成提示框中的提示内容
+    function emailPrompt(inputValue) {
+        var value = transcodeing(inputValue)
+        var index = value.indexOf("@")
+        var prefix, suffix;
+        var text = ""
+
+        if(index>-1){
+            prefix = value.substring(0,index)
+            suffix = value.substring(index+1)
+        } else {
+            prefix = value
+        }
+        var flag = false;
+        for(var i=0; i<postfixList.length; i++){
+            if(index > -1 && suffix != "" && postfixList[i].indexOf(suffix) == 0){
+                flag = true;
+                text = text + "<li>" + prefix + "@" + postfixList[i] + "</li>"
+            }
+        }
+        if(flag == false){
+            for(var i=0; i<postfixList.length; i++){
+                text = text + "<li>" + prefix + "@" + postfixList[i] + "</li>"
+            }
+        }
+        
+        return text
+    }
+    //将提示内容添加到ul标签
+    function addObj(inputValue){
+        ul.innerHTML = emailPrompt(inputValue)
+        if(ul.getElementsByTagName("li") != undefined){
+            ul.getElementsByTagName("li")[0].setAttribute('class','active')
+        }
+    }
+    //控制ul标签的显示和隐藏
+    function controller(inputValue){
+        inputValue == "" ? hide() : show()
+    }
+    //隐藏
+    function hide() {
+        ul.style.display = "none"
+    }
+    //显示
+    function show() {
+        ul.style.display = "block"
+    }
+    //转义函数
+    function transcodeing(str) {
+        var s= str;
+        s=s.replace(/</g,"&lt;")
+        s=s.replace(/>/g,"&gt;")
+        s=s.replace(/&/g,"&amp;")
+        s=s.replace(/"/g,"&quot;")
+        return s
+    }   
+    
+</script>
+</html>
