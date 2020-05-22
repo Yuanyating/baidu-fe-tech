@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 1</title>
+</head>
+<body>
+    
+</body>
+<script src="./es6.js"></script>
+<script>
+    var id = 0;
+    var ifeRestaurant = new Restaurant({
+        content: 20,
+        money: 100000,
+        staff: []
+    })
+    var newCook = new Cook("Tony",10000)
+    ifeRestaurant.hire(newCook)
+    console.log(ifeRestaurant.staff)
+
+    ifeRestaurant.fire(newCook)
+    console.log(ifeRestaurant.staff)
+</script>
+</html>
