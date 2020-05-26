@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 1</title>
+</head>
+<body>
+    
+</body>
+<script src="./JS/extend.js"></script>
+<script src="./JS/Employee.js"></script>
+<script src="./JS/Waiter.js"></script>
+<script src="./JS/Cook.js"></script>
+<script src="./JS/menuList.js"></script>
+<script src="./JS/Customer.js"></script>
+<script src="./JS/cusList.js"></script>
+<script src="./JS/Restaurant.js"></script>
+
+<script>
+    var ifeRestaurant = new Restaurant({
+        name: "萝卜酱餐厅",
+        cash: 100000,
+        seats: 1,
+        staff: []
+    })
+    let waiter = theWaiter("张三",6000)
+    let cook = theCook("李四",10000)
+    ifeRestaurant.hire(waiter)
+    ifeRestaurant.hire(cook)
+
+    customerList.joinIn(new Customer())
+    customerList.joinIn(new Customer())
+    customerList.joinIn(new Customer())
+    customerList.stepIn()
+
+    
+</script>
+</html>
