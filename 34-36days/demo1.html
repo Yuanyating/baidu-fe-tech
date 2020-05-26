@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 1</title>
+    <style>
+        table, th, td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="region-wrapper"></div>
+    <div id="product-wrapper"></div>
+    <div id="bar-wrapper"></div>
+    <div id="line-wrapper"></div>
+    <div id="table-wrapper"></div>
+</body>
+<script src="./ife31data.js"></script>
+<script src="./checkbox.js"></script>
+<script src="./bar.js"></script>
+<script src="./line.js"></script>
+<script>
+    var tableWrapper = document.getElementById("table-wrapper")
+    var regionWrapper = document.getElementById("region-wrapper")
+    var productWrapper = document.getElementById("product-wrapper")
+    var svgWrapper = document.getElementById("bar-wrapper")
+    var cvsWrapper = document.getElementById("line-wrapper")
+    var option1 = [{value:"华东",text:"华东"},{value:"华南",text:"华南"},{value:"华北",text:"华北"}]
+    var option2 = [{value:"手机",text:"手机"},{value:"笔记本",text:"笔记本"},{value:"智能音箱",text:"智能音箱"}]
+    var regionSelectedLength, productSelectedLength
+
+    createCheckbox(regionWrapper,option1)
+    createCheckbox(productWrapper,option2)
+    tableWrapper.addEventListener("mouseover", function(e) {
+        if(e.target.nodeName.toLocaleLowerCase() == "td"){
+            let tr = e.target.parentNode;
+            tableLinkage(tr)
+        }
+    })
+    
+
+    function getData(){
+        var data = []
+        var region = [], product = []
+        var regionSelected =  regionWrapper.getElementsByTagName("input")
+        var productSelected = productWrapper.getElementsByTagName("input")
+        for(var i=0; i<regionSelected.length; i++){
+            if(regionSelected[i].getAttribute("data-checkbox-type") == "single" && regionSelected[i].checked == true){
+                region.push(regionSelected[i].value)
+            }
+            if(productSelected[i].getAttribute("data-checkbox-type") == "single" && productSelected[i].checked == true){
+                product.push(productSelected[i].value)
+            }
+        }
+        sourceData.map((item,index) => {
+            if((region.indexOf(item.region) != -1) && (product.indexOf(item.product) != -1)){
+                data.push(item)
+            }
+        })
+        regionSelectedLength =  region.length
+        productSelectedLength = product.length
+        return data
+    }
+    
+</script>
+<script src="table.js" ></script>
+</html>
